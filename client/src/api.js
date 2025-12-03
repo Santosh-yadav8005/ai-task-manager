@@ -1,18 +1,14 @@
 const API_URL = "https://ai-task-manager-backend-eh0o.onrender.com";
 
-
-
-
-
 // Fetch all tasks
 export async function fetchTasks() {
-  const res = await fetch(`${API_URL}/tasks`);
+  const res = await fetch(`${API_URL}/api/tasks`);
   return res.json();
 }
 
 // Create new task
 export async function createTask(data) {
-  const res = await fetch(`${API_URL}/tasks`, {
+  const res = await fetch(`${API_URL}/api/tasks`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -20,9 +16,9 @@ export async function createTask(data) {
   return res.json();
 }
 
-// Update a task
+// Update task
 export async function updateTask(id, data) {
-  const res = await fetch(`${API_URL}/tasks/${id}`, {
+  const res = await fetch(`${API_URL}/api/tasks/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -30,20 +26,18 @@ export async function updateTask(id, data) {
   return res.json();
 }
 
-// Delete a task
+// Delete task
 export async function deleteTask(id) {
-  await fetch(`${API_URL}/tasks/${id}`, {
+  const res = await fetch(`${API_URL}/api/tasks/${id}`, {
     method: "DELETE",
   });
+  return res.json();
 }
 
-// AI Auto Split
-export async function getAISubtasks(title) {
-  const res = await fetch(`${API_URL}/ai/suggest`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title }),
-  });
-
-  return res.json(); // { subtasks: [...] }
+// AI Auto Split (GET) - used by frontend
+export async function getAISubtasks(taskTitle) {
+  const res = await fetch(
+    `${API_URL}/api/ai/split?title=${encodeURIComponent(taskTitle)}`
+  );
+  return res.json();
 }
