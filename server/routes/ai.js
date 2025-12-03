@@ -33,14 +33,14 @@ router.get("/split", (req, res) => {
     ];
   } else {
     subtasks = [
-      "Break the task into 3-5 small steps",
+      "Break the task into small steps",
       "Write steps clearly",
-      "Start with the simplest step",
+      "Start with the easiest step",
       "Review progress",
     ];
   }
 
-  return res.json({ subtasks });
+  res.json({ subtasks });
 });
 
 module.exports = router;
