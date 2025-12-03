@@ -63,15 +63,13 @@ export default function TaskItem({ task, onUpdate, onDelete, onAISuggest }) {
       {task.subtasks && task.subtasks.length > 0 && (
         <ul className="subtasks">
           {task.subtasks.map((s, i) => (
-            <li key={i}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={s.done}
-                  onChange={() => toggleSubtask(i)}
-                />{" "}
-                {s.title}
-              </label>
+            <li key={i} className="subtask-item">
+              <input
+                type="checkbox"
+                checked={s.done}
+                onChange={() => toggleSubtask(i)}
+              />
+              <span>{s.title}</span>
             </li>
           ))}
         </ul>
