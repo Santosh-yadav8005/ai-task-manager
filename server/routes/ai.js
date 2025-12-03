@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.post("/suggest", (req, res) => {
-  const { title } = req.body;
+router.get("/split", (req, res) => {
+  const { title } = req.query;
 
   if (!title) {
     return res.status(400).json({ error: "Title is required" });
