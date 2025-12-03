@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://ai-task-manager-backend-eh0o.onrender.com";
+
 
 // Fetch all tasks
 export async function fetchTasks() {
