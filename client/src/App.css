@@ -107,3 +107,25 @@ button {
   gap: 10px;
   margin: 6px 0;
 }
+
+
+.subtasks {
+  list-style-type: none !important;
+  padding-left: 0 !important;
+  margin-top: 12px;
+}
+
+.subtask-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 8px 0 !important;
+}
+
+.subtask-item span {
+  font-size: 0.95rem;
+}
+
+.subtask-item input {
+  transform: scale(1.1);
+}
