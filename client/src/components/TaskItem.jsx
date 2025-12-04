@@ -1,7 +1,7 @@
 export default function TaskItem({ task, onUpdate, onDelete, onAISuggest }) {
   // Deadline text format
   const deadlineText = task.deadline
-    ? new Date(task.deadline).toLocaleString()
+    ? new Date(task.deadline).toLocaleString() 
     : "No deadline";
 
   // Update status
