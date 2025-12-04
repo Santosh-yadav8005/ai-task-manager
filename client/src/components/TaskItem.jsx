@@ -1,24 +1,23 @@
 export default function TaskItem({ task, onUpdate, onDelete, onAISuggest }) {
-  // deadline text banane ke liye
+  // Deadline text format
   const deadlineText = task.deadline
     ? new Date(task.deadline).toLocaleString()
     : "No deadline";
 
-  // status update
+  // Update status
   const handleStatusChange = (e) => {
     onUpdate(task._id, { status: e.target.value });
   };
 
-  // subtask toggle
+  // Toggle subtask done/undone
   const toggleSubtask = (index) => {
     const updatedSubtasks = task.subtasks.map((s, i) =>
       i === index ? { ...s, done: !s.done } : s
     );
-
     onUpdate(task._id, { subtasks: updatedSubtasks });
   };
 
-  // priority badges
+  // Priority badge color
   const getPriorityClass = () => {
     if (task.priority === "high") return "tag tag-high";
     if (task.priority === "low") return "tag tag-low";
@@ -38,7 +37,7 @@ export default function TaskItem({ task, onUpdate, onDelete, onAISuggest }) {
         Deadline: {deadlineText}
       </p>
 
-      {/* Status dropdown */}
+      {/* Status */}
       <label style={{ fontSize: "0.85rem" }}>
         Status:{" "}
         <select value={task.status} onChange={handleStatusChange}>
